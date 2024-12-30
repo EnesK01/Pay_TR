@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="12.541" tests="2" skipped="0" failures="0" errors="0">
+<testcase classname="Paytr Production Website Cases" name="A non-customer must be able to go to the apply page via the home page." time="4.682">
+<system-out><![CDATA[
+Given I open browser for and go to the Paytr production website for all scenarios.passed
+Then Non-customer click the apply button....................................passed
+Then Non-customer see the apply page........................................passed
+Then I take screenshot and save as "apply_page_control".....................passed
+]]></system-out>
+</testcase>
+<testcase classname="Paytr Production Website Cases" name="if a non-customer leaves any of the fields blank they should see the error message" time="7.748">
+<system-out><![CDATA[
+Given I open browser for and go to the Paytr production website for all scenarios.passed
+Then Non-customer click the apply button....................................passed
+Then Non-customer see the apply page........................................passed
+Then Non-customer fills name, surname,phone,gmail areas.....................passed
+Then Non-customer chooses the business type and left the other areas empty..passed
+Then Non-customer accept the terms and apply................................passed
+Then Non-customer should see missing area warnings..........................passed
+Then I take screenshot and save as "check_not_printing_with_missing_fields".passed
+]]></system-out>
+</testcase>
+</testsuite>
