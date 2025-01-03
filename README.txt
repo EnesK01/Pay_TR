@@ -29,3 +29,6 @@ Testlerin Çalıştırılması:
 
 3-Feature dosyası içerisinde "Scenario:" kısmının solunda yer alan Run Test seçeneği ile testi çalıştırabilirsiniz.
 
+Test Raporlarının Görüntülenmesi:
+
+Test bittiğinde target klasöründeki cucumber-reports.html dosyasına giderek oradaki Chrome simgesine basılarak test koşum raporunu,step detaylarını  gözlemleyebilirsiniz.
