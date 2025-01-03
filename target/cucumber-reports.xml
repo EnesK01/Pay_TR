@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="12.541" tests="2" skipped="0" failures="0" errors="0">
-<testcase classname="Paytr Production Website Cases" name="A non-customer must be able to go to the apply page via the home page." time="4.682">
+<testsuite name="Cucumber" time="24.41" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Paytr Production Website Cases" name="Successfully receiving the limited company customer's payment application via the link and keeping the reference record" time="24.3">
 <system-out><![CDATA[
-Given I open browser for and go to the Paytr production website for all scenarios.passed
-Then Non-customer click the apply button....................................passed
-Then Non-customer see the apply page........................................passed
-Then I take screenshot and save as "apply_page_control".....................passed
-]]></system-out>
-</testcase>
-<testcase classname="Paytr Production Website Cases" name="if a non-customer leaves any of the fields blank they should see the error message" time="7.748">
-<system-out><![CDATA[
-Given I open browser for and go to the Paytr production website for all scenarios.passed
-Then Non-customer click the apply button....................................passed
-Then Non-customer see the apply page........................................passed
-Then Non-customer fills name, surname,phone,gmail areas.....................passed
-Then Non-customer chooses the business type and left the other areas empty..passed
-Then Non-customer accept the terms and apply................................passed
-Then Non-customer should see missing area warnings..........................passed
-Then I take screenshot and save as "check_not_printing_with_missing_fields".passed
+Given I open browser for and go to the Paytr production website loaded successfully for all scenarios.passed
+Then Control of 12 subheadings of the Everything You Need for Payments heading.passed
+Then Control of 5 subheadings of the Mainpage...............................passed
+Then I see product option and choose the payment type.......................passed
+Then I check the payment via link page loaded successfully..................passed
+Then I take screenshot and save as "payment_via_link_page"..................passed
+Then I fill main first informations areas about company and choose businesstype.passed
+Then I take screenshot and save as "first_areas_filled_from_Excel"..........passed
+Then I accept the terms and send apply......................................passed
+Then I fill main second informations areas about company and choose businesstype.passed
+Then I take screenshot and save as "second_areas_filled_from_Excel".........passed
+Then I send apply for last time.............................................passed
+Then I see successfully apply and save the reference number.................passed
+Then I take screenshot and save as "successfully_applied"...................passed
 ]]></system-out>
 </testcase>
 </testsuite>

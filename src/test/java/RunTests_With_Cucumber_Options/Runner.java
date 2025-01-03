@@ -12,7 +12,7 @@ import io.cucumber.testng.CucumberOptions;
         },
         features = "src/test/resources/Paytr_Prod_Features",
         glue = "StepDefinitions",
-        tags = "@ApplyPageTests",
+        tags = "@SuccessfullyReceivingThePaymentApplicationViaLink",
         dryRun = false
 )
 public class Runner extends AbstractTestNGCucumberTests {

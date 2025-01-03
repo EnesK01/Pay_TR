@@ -4,21 +4,20 @@ Feature:  Paytr Production Website Cases
 
 
   Background: I open browser
-    Given I open browser for and go to the Paytr production website for all scenarios
+    Given I open browser for and go to the Paytr production website loaded successfully for all scenarios
+    Then Control of 12 subheadings of the Everything You Need for Payments heading
+    Then Control of 5 subheadings of the Mainpage
 
-
-@ApplyPageSmoketest
-    Scenario: A non-customer must be able to go to the apply page via the home page.
-            Then Non-customer click the apply button
-            Then Non-customer see the apply page
-            Then I take screenshot and save as "apply_page_control"
-
-  @ApplyPageNegativetest
-  Scenario: if a non-customer leaves any of the fields blank they should see the error message
-    Then Non-customer click the apply button
-    Then Non-customer see the apply page
-    Then Non-customer fills name, surname,phone,gmail areas
-    Then Non-customer chooses the business type and left the other areas empty
-    Then Non-customer accept the terms and apply
-    Then Non-customer should see missing area warnings
-    Then I take screenshot and save as "check_not_printing_with_missing_fields"
+@SuccessfullyReceivingThePaymentApplicationViaLink
+  Scenario: Successfully receiving the limited company customer's payment application via the link and keeping the reference record
+  Then I see product option and choose the payment type
+  Then I check the payment via link page loaded successfully
+  Then I take screenshot and save as "payment_via_link_page"
+  Then I fill main first informations areas about company and choose businesstype
+  Then I take screenshot and save as "first_areas_filled_from_Excel"
+  Then I accept the terms and send apply
+  Then I fill main second informations areas about company and choose businesstype
+  Then I take screenshot and save as "second_areas_filled_from_Excel"
+  Then I send apply for last time
+  Then I see successfully apply and save the reference number
+  Then I take screenshot and save as "successfully_applied"

@@ -1,7 +1,9 @@
 package StepDefinitions;
 
-import PagesObjectModels.CustomerApplyPage;
+import PagesObjectModels.ApplyPaymentViaLinkPage;
 import PagesObjectModels.BasePage;
+import PagesObjectModels.BecomeABusinessCustomerPage;
+import PagesObjectModels.SuccessFullyAppliedPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
@@ -14,14 +16,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utils.UseableMethods;
+
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 public class MyStepdefs {
     private static final Logger logger= LoggerFactory.getLogger(MyStepdefs.class);
     WebDriver driver;
     BasePage basePage;
-    CustomerApplyPage customerApplyPage;
+    ApplyPaymentViaLinkPage applyPaymentViaLinkPage;
+    BecomeABusinessCustomerPage becomeABusinessCustomerPage;
+    UseableMethods useableMethods;
+    SuccessFullyAppliedPage successFullyAppliedPage;
 
     @Before
     public void setUp() {
@@ -29,29 +37,24 @@ public class MyStepdefs {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         basePage = new BasePage(driver);
-        customerApplyPage = new CustomerApplyPage(driver);
+        applyPaymentViaLinkPage = new ApplyPaymentViaLinkPage(driver);
+        becomeABusinessCustomerPage=new BecomeABusinessCustomerPage(driver);
+        useableMethods=new UseableMethods(driver);
+        successFullyAppliedPage=new SuccessFullyAppliedPage(driver);
     }
-
-    @When("I open browser for and go to the Paytr production website for all scenarios")
-    public void iNavigateToApplyPageAndApplyForAJob() {
+    @When("I open browser for and go to the Paytr production website loaded successfully for all scenarios")
+    public void iNavigateToApplyPageAndApplyForAJob(){
         basePage.GoTomainPage();
+        useableMethods.PageLoadedSuccessFully();
+
     }
-
-    @Then("Non-customer click the apply button")
-    public void nonCustomerCanSeeTheApplyButtonIsPresentAtTheSite() {
-        basePage.clickToBecomeNewCustomer();
+    @Then("Control of 12 subheadings of the Everything You Need for Payments heading")
+    public void thenICheckWeCanSeeTwelveTitleAtTheHomepage() {
+        basePage.ControlOf12Subheadings();
     }
-
-    @Then("Non-customer see the apply page")
-    public void nonCustomerSeeTheApplyScreen() {
-
-        logger.info("yeni taba gecildi");
-        customerApplyPage.isDisplaying();
-    }
-
-    @Then("Non-customer fills name, surname,phone,gmail areas")
-    public void nonCustomerFillsNameSurnamePhoneGmailAreas() {
-        customerApplyPage.fillInformationsAboutThemself();
+    @Then("Control of 5 subheadings of the Mainpage")
+    public void controlOfSubheadingsOfTheMainpage() {
+        basePage.ControlOf5Subheadings();
 
     }
 
@@ -65,28 +68,45 @@ public class MyStepdefs {
         FileUtils.copyFile(screenShot,new File(path));
 
     }
-    @Then("Non-customer chooses the business type and left the other areas empty")
-    public void nonCustomerChoosesTheBusinessTypeAndLeftTheOtherAreasEmpty() {
-        customerApplyPage.chooseBusinessTypeandProduct();
-        try {
-            ıTakeScreenshotAndSaveAs("displaying_filled_fields");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @Then("I see product option and choose the payment type")
+    public void ıSeeProductOptionAndHover() {
+        basePage.moveToProductandChoosepaymentViaLink();
     }
-    @Then("Non-customer accept the terms and apply")
-    public void nonCustomerAcceptTheTermsAndApply() {
-        customerApplyPage.acceptTermsAndSendApply();
+    @Then("I check the payment via link page loaded successfully")
+    public void ıCheckThePaymentViaLinkPageLoadedSuccessfully() {
+        applyPaymentViaLinkPage.isDisplaying();
     }
-    @Then("Non-customer should see missing area warnings")
-    public void nonCustomerShouldSeeMissingAreaWarnings() {
-        customerApplyPage.SeeWarningMesssages();
+    @Then("I fill main first informations areas about company and choose businesstype")
+    public void ıFillFirstMainInformationsAboutCompany() throws IOException {
+            applyPaymentViaLinkPage.takeInformationsAboutCompanyandChooseBusinessForAreaFirstType();
+
+    }
+    @Then("I accept the terms and send apply")
+    public void ıAcceptTheTermsAndSendApply() {
+        applyPaymentViaLinkPage.sendApplyprocess();
+    }
+    @Then("I fill main second informations areas about company and choose businesstype")
+    public void ıFillMainSecondInformationsAreasAboutCompanyAndChooseBusinesstype() throws IOException, InterruptedException {
+        becomeABusinessCustomerPage.takeInformationsAboutCompanyandChooseBusinessForAreaSecondType();
+
+    }
+    @Then("I send apply for last time")
+    public void ıSendApplyToTakeReferenceNumber() throws InterruptedException {
+        becomeABusinessCustomerPage.sendApplyAndSaveReferenceNumber();
+    }
+    @Then("I see successfully apply and save the reference number")
+    public void ıSeeSuccessfullyApplyAndSaveTheReferenceNumber() throws InterruptedException, IOException {
+        successFullyAppliedPage.seeSuccessAndSaveReferenceNumber();
+
     }
     @After()
     public void tearDown() {
         if (driver != null) {
             driver.quit();
+
         }
     }
+
+
 
 }
