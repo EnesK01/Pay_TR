@@ -9,7 +9,7 @@ Aşağıda belirttiğim senaryo PAYTR production web ortamına( https://www.payt
 --Not: Önemli adımlarda site üzerinde yapılan islemlerin ekran görüntüleri alınarak screenshots klasörünün içerisine kaydedilmiştir.
 Kurulum:
 Java 11 veya üzeri bir JDK.
-Intellij Version 2020.3.4
+Intellij IDEA Community Edition Version : 2020.3.4
 
 Projeyi çalıştırmadan önce gerekli bağımlılıkların yüklenmesi gerekmektedir. Bağımlılıklar:
 Selenium 4.26.0---> Web otomasyonu için kullanıldı.
