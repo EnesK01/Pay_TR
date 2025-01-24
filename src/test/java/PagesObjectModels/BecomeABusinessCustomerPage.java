@@ -23,7 +23,7 @@ public class BecomeABusinessCustomerPage extends BasePage{
     private  WebElement tax_office;
     @FindBy(id = "monthly_sale")
     private  WebElement monthly_sale;
-    @FindBy (xpath = "//button[@class='style_button__dHHoa']")
+    @FindBy (xpath = "//button[@class='style_button__38lBq']")
     private WebElement send_apply;
     @FindBy (xpath = "//*[contains(text(),'Teşekkürler, ön başvurunuz tarafımıza ulaşmıştır.')]")
 

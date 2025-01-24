@@ -17,7 +17,7 @@ public class SuccessFullyAppliedPage extends BecomeABusinessCustomerPage {
 
     @FindBy(xpath = "//*[contains(text(),'Teşekkürler, ön başvurunuz tarafımıza ulaşmıştır.')]")
     private WebElement successfully_message;
-    @FindBy(xpath = "//a[@class='style_reference__fbdIc']")
+    @FindBy(xpath = "//a[@class='style_reference___1Gx7']")
     private WebElement reference_number;
     String baseUrl = "https://www.paytr.com/uye-isyeri-olun/basarili";
 
